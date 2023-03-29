@@ -1,9 +1,9 @@
 import { ulid } from 'ulid'
 
 /**
- * 対局ID
+ * ユーザーID
  */
-export class TaikyokuId {
+export class UserId {
   private _value: string
 
   constructor (value?: string) {

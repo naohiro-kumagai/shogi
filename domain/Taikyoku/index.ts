@@ -1,6 +1,5 @@
-import { Player } from '../User/Player'
-import { Gote } from '../User/Player/Gote'
-import { Sente } from '../User/Player/Sente'
+import { UserId } from '../User/UserId'
+import { ShogiBoard } from './ShogiBoard'
 import { TaikyokuId } from './TaikyokuId'
 import { TaikyokuStatus } from './TaikyokuStatus'
 
@@ -9,16 +8,17 @@ import { TaikyokuStatus } from './TaikyokuStatus'
  */
 export class Taikyoku {
   public readonly name: string
-  public readonly taikyokuStatus: TaikyokuStatus
-  public sente?: Player
-  public gote?: Player
+  public readonly status: TaikyokuStatus
+  public board: ShogiBoard = new ShogiBoard()
+  public senteId?: UserId
+  public goteId?: UserId
   public readonly id: TaikyokuId
 
-  constructor (name: string, sente?: string, gote?: string, id?: string) {
+  constructor (name: string, senteId?: string, goteId?: string, id?: string) {
     this.name = name
-    this.taikyokuStatus = new TaikyokuStatus()
-    if (sente) { this.sente = new Sente(sente) }
-    if (gote) { this.gote = new Gote(gote) }
+    this.status = new TaikyokuStatus()
+    if (senteId) { this.senteId = new UserId(senteId) }
+    if (goteId) { this.goteId = new UserId(goteId) }
     this.id = new TaikyokuId()
     if (id) { this.id = new TaikyokuId(id) }
   }
