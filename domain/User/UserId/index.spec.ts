@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest'
 import { UserId } from '.'
-import { DomainInitializationError } from '~~/domain/DomainError'
+import { ValidationError } from '~~/domain/DomainError'
 
 it('値を指定しない場合新規発番される', () => {
   const userId = new UserId()
@@ -13,5 +13,5 @@ it('値を指定した場合その値のインスタンスが生成される', (
 })
 
 it('値のフォーマットが正しくない場合エラーを投げる', () => {
-  expect(() => new UserId('01GWS9BYKWJ')).toThrow(new DomainInitializationError('invalid id'))
+  expect(() => new UserId('01GWS9BYKWJ')).toThrow(new ValidationError('invalid id'))
 })
