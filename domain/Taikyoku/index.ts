@@ -14,6 +14,7 @@ export class Taikyoku {
   public readonly name: string
   private _status: TaikyokuStatus
   public board: ShogiBoard = new ShogiBoard()
+  public kifu: Kifu
   public senteId?: UserId
   public goteId?: UserId
   public readonly id: TaikyokuId
