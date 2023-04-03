@@ -45,8 +45,9 @@ export class Taikyoku {
   /**
    * 対局終了
    */
-  finish () {
+  finish (): void {
     this._status = new Finished()
+    if (this.kifu) { this.kifu.finishDate = new Date() }
   }
 
   /**

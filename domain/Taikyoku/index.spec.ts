@@ -30,19 +30,26 @@ describe('Taikyoku', () => {
 
     expect(taikyoku.kifu).toBe(undefined) // start前は棋譜がセットアップされていない
 
+    const now = new Date()
     taikyoku.start()
 
     expect(taikyoku.status.equal(new Playing())).toBe(true) // start後は対局中となる
     expect(taikyoku.kifu instanceof Kifu).toBe(true) // start後は棋譜がセットアップされている
+    expect(taikyoku.kifu?.startDate).toStrictEqual(now) // start時刻が棋譜に記録されている
   })
 
-  it('対局を終了するとステータスは"対局終了"となる', () => {
+  it('対局を終了するとステータスは"対局終了"となる', async () => {
     const sente = new Sente('Alice')
     const gote = new Gote('Bob')
     const taikyoku = new Taikyoku({ name: '最初の対局', senteId: sente.id, goteId: gote.id })
     taikyoku.start()
+    await new Promise(resolve => setTimeout(resolve, 1000))
+
+    const now = new Date()
     taikyoku.finish()
 
-    expect(taikyoku.status.equal(new Finished())).toBe(true)
+    expect(taikyoku.status.equal(new Finished())).toBe(true) // finish後は対局終了となる
+
+    expect(taikyoku.kifu?.finishDate).toStrictEqual(now) // start時刻が棋譜に記録されている
   })
 })
