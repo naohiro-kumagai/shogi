@@ -1,9 +1,12 @@
-import { Koma } from '../Kifu/Moves/Te/Koma'
 import { Dan } from './Masu/Dan'
 import { Suji } from './Masu/Suji'
 import { Masu } from './Masu'
+import { Koma } from '~~/domain/Koma'
 import { ValueObject } from '~~/domain/ValueObject'
 
+/**
+ * 将棋盤
+ */
 export class ShogiBoard extends ValueObject {
   private _masuList: Array<Masu>
   private _senteKomadai: Array<Koma> = []

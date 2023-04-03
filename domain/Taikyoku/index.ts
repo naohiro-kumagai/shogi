@@ -1,5 +1,6 @@
 import { MissingConditionsError } from '../DomainError'
 import { UserId } from '../User/UserId'
+import { Kifu } from './Kifu'
 import { ShogiBoard } from './ShogiBoard'
 import { TaikyokuId } from './TaikyokuId'
 import { TaikyokuStatus } from './TaikyokuStatus'
@@ -14,7 +15,7 @@ export class Taikyoku {
   public readonly name: string
   private _status: TaikyokuStatus
   public board: ShogiBoard = new ShogiBoard()
-  public kifu: Kifu
+  public kifu: Kifu | undefined
   public senteId?: UserId
   public goteId?: UserId
   public readonly id: TaikyokuId
@@ -38,6 +39,7 @@ export class Taikyoku {
   start (): void {
     if (!this.isReadyToStart()) { throw new MissingConditionsError('開始するためにはプレイヤーが足りません') }
     this._status = new Playing()
+    this.kifu = new Kifu(new Date())
   }
 
   /**

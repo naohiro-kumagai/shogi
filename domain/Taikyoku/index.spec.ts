@@ -5,6 +5,7 @@ import { MissingConditionsError } from '../DomainError'
 import { Matchmaking } from './TaikyokuStatus/Matchmaking'
 import { Playing } from './TaikyokuStatus/Playing'
 import { Finished } from './TaikyokuStatus/Finished'
+import { Kifu } from './Kifu'
 import { Taikyoku } from '.'
 
 describe('Taikyoku', () => {
@@ -26,9 +27,13 @@ describe('Taikyoku', () => {
     const taikyoku = new Taikyoku({ name: '最初の対局', senteId: sente.id })
     const gote = new Gote('Bob')
     taikyoku.goteId = gote.id
+
+    expect(taikyoku.kifu).toBe(undefined) // start前は棋譜がセットアップされていない
+
     taikyoku.start()
 
-    expect(taikyoku.status.equal(new Playing())).toBe(true)
+    expect(taikyoku.status.equal(new Playing())).toBe(true) // start後は対局中となる
+    expect(taikyoku.kifu instanceof Kifu).toBe(true) // start後は棋譜がセットアップされている
   })
 
   it('対局を終了するとステータスは"対局終了"となる', () => {
