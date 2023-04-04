@@ -9,6 +9,8 @@ class DomainError extends Error {
 export class ValidationError extends DomainError {}
 /** 実行するための条件不足 */
 export class MissingConditionsError extends DomainError {}
+/** 移動できない */
+export class CannotMoveError extends DomainError {}
 
 // バリデーションエラー：ValidationError
 // 一意性エラー：DuplicateError

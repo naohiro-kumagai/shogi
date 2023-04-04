@@ -1,5 +1,6 @@
 import { Narigoma } from '..'
-import { Fuhyou } from '../../NamaGoma/Fuhyou'
+import { Koma } from '../..'
+// import { Fuhyou } from '../../NamaGoma/Fuhyou'
 import { Masu } from '~~/domain/Taikyoku/ShogiBoard/Masu'
 
 export class Tokin extends Narigoma {
@@ -7,7 +8,7 @@ export class Tokin extends Narigoma {
     super(position, [], new Fuhyou(position))
   }
 
-  move (destination: Masu): void {
-    this._position = destination
+  move (destination: Masu): Koma {
+    return new Tokin(destination)
   }
 }

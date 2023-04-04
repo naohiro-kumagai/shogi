@@ -5,9 +5,10 @@ import { Masu } from '~~/domain/Taikyoku/ShogiBoard/Masu'
 export abstract class Narigoma extends Koma {
   constructor (
     protected _position: Masu,
-    protected _movementRange: MovementRange,
-    protected _namagoma: Namagoma
+    protected _movementRange: MovementRange
   ) {
     super(_position, _movementRange)
   }
+
+  abstract demote (): Namagoma
 }

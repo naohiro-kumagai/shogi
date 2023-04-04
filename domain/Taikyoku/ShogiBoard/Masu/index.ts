@@ -16,4 +16,13 @@ export class Masu extends ValueObject {
   call (): string {
     return this._suji.value + this._dan.value
   }
+
+  /**
+   * 2つのマスの差を計算
+   * @param other 差を計算したいマス
+   * @returns 筋と段の差の数
+   */
+  diff (other: Masu) {
+    return { suji: this._suji.diff(other._suji), dan: this._dan.diff(other._dan) }
+  }
 }
