@@ -24,7 +24,13 @@ export abstract class Koma extends ValueObject {
    * 移動
    * @param destination 移動先のマス
    */
-  abstract move (destination: Masu): Koma
+  move (destination: Masu): Koma {
+    if (!this.canMove(destination.diff(this._position))) { return this }
+    // console.log(this)
+    // console.log(new this.constructor(destination))
+    const Constructor = this.constructor as { new(destination: Masu): Koma }
+    return new Constructor(destination)
+  }
 
   /**
    * 移動できるかの判定

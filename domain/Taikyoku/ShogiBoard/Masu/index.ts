@@ -1,16 +1,21 @@
-import { Dan } from './Dan'
-import { Suji } from './Suji'
+import { Dan, DanType } from './Dan'
+import { Suji, SujiType } from './Suji'
 import { ValueObject } from '~~/domain/ValueObject'
 
 /**
  * マス
  */
 export class Masu extends ValueObject {
+  private _suji: Suji
+  private _dan: Dan
+
   constructor (
-    private _suji: Suji,
-    private _dan: Dan
+    suji: SujiType,
+    dan: DanType
   ) {
     super()
+    this._suji = new Suji(suji)
+    this._dan = new Dan(dan)
   }
 
   call (): string {
