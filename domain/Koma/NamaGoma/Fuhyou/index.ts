@@ -8,7 +8,7 @@ export class Fuhyou extends Namagoma {
     super(position, [{ suji: 0, dan: -1 }])
   }
 
-  promote (): Narigoma {
+  protected promoteKoma (): Narigoma {
     return new Tokin(this._position)
   }
 }

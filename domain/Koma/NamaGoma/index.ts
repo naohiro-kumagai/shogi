@@ -1,6 +1,7 @@
 import { Koma, MovementRange } from '..'
 import { Narigoma } from '../Narigoma'
 import { Masu } from '~~/domain/Taikyoku/ShogiBoard/Masu'
+import { MissingConditionsError } from '~~/domain/DomainError'
 
 export abstract class Namagoma extends Koma {
   constructor (
@@ -14,5 +15,28 @@ export abstract class Namagoma extends Koma {
    * 成る
    * @return 成駒
    */
-  abstract promote (): Narigoma
+  protected promote (): Narigoma {
+    if (!this.canPromote()) { throw new MissingConditionsError('成るための条件が足りません') }
+    return this.promoteKoma()
+  }
+
+  /**
+   * 成るための判定
+   * @returns 判定結果
+   */
+  private canPromote (): boolean {
+    switch (this._position.call()) {
+      case '1一':
+        return true
+      case '7三':
+        return true
+    }
+    return false
+  }
+
+  /**
+   * 成る駒の取得
+   * @returns なったあとの駒
+   */
+  protected abstract promoteKoma (): Narigoma
 }
