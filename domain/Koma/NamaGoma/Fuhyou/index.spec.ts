@@ -18,6 +18,6 @@ describe('Fuhyou', () => {
 
     const cannotPromoteFu = new Fuhyou(new Masu(7, '七'))
     const cannotPromoteFu2 = cannotPromoteFu.move(new Masu(7, '六'))
-    expect(() => cannotPromoteFu2.promote()).toThrowError(new MissingConditionsError('成るための条件が足りません'))
+    expect(() => cannotPromoteFu2.promote()).toThrowError(new MissingConditionsError('この駒は成れません'))
   })
 })

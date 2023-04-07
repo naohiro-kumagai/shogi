@@ -16,7 +16,7 @@ export abstract class Namagoma extends Koma {
    * @return 成駒
    */
   protected promote (): Narigoma {
-    if (!this.canPromote()) { throw new MissingConditionsError('成るための条件が足りません') }
+    if (!this.canPromote()) { throw new MissingConditionsError('この駒は成れません') }
     return this.promoteKoma()
   }
 
