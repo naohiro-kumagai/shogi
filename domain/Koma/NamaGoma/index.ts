@@ -3,6 +3,9 @@ import { Narigoma } from '../Narigoma'
 import { Masu } from '~~/domain/Taikyoku/ShogiBoard/Masu'
 import { MissingConditionsError } from '~~/domain/DomainError'
 
+/**
+ * 成駒
+ */
 export abstract class Namagoma extends Koma {
   constructor (
     protected _position: Masu,

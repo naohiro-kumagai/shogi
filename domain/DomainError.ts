@@ -1,3 +1,6 @@
+/**
+ * ドメインエラー
+ */
 class DomainError extends Error {
   constructor (e?: string) {
     super(e)

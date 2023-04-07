@@ -20,10 +20,6 @@ export class Taikyoku {
   public goteId?: UserId
   public readonly id: TaikyokuId
 
-  get status () {
-    return this._status
-  }
-
   constructor ({ name, senteId, goteId, id }: { name: string, senteId?: UserId, goteId?: UserId, id?: TaikyokuId }) {
     this.name = name
     this._status = new Matchmaking() // 新規作成時は対局相手募集中
@@ -31,6 +27,13 @@ export class Taikyoku {
     if (goteId) { this.goteId = goteId }
     this.id = new TaikyokuId()
     if (id) { this.id = id }
+  }
+
+  /**
+   * 対局の状態
+   */
+  get status () {
+    return this._status
   }
 
   /**
