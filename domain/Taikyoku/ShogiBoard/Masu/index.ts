@@ -42,4 +42,15 @@ export class Masu extends ValueObject {
   canPromote (): boolean {
     return this._dan.canPromote()
   }
+
+  /**
+   * 打つことができるマスかどうか
+   * @returns 判定結果
+   */
+  canPlacement (): boolean {
+    // TODO: 前にしか進めない駒は進めないマスには打てない
+    // TODO: すでに駒があるマスには打てない
+
+    return true
+  }
 }

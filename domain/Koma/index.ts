@@ -13,6 +13,8 @@ export type MovementRange = Movement[]
  * 駒
  */
 export abstract class Koma extends ValueObject {
+  abstract readonly name: string
+
   constructor (
     protected readonly _position: Masu,
     protected readonly _movementRange: MovementRange
@@ -39,7 +41,7 @@ export abstract class Koma extends ValueObject {
    * @throws {CannotMoveError} 移動できません
    */
   protected canMove (destination: Movement): true {
-    if (!this._movementRange.find(obj => obj.suji === destination.suji && obj.dan === destination.dan)) {
+    if (!this._movementRange.some(movement => movement.suji === destination.suji && movement.dan === destination.dan)) {
       throw new CannotMoveError('移動できません')
     }
     return true
