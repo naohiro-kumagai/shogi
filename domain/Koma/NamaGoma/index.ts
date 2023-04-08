@@ -28,13 +28,8 @@ export abstract class Namagoma extends Koma {
    * @returns 判定結果
    */
   private canPromote (): boolean {
-    switch (this._position.call()) {
-      case '1一':
-        return true
-      case '7三':
-        return true
-    }
-    return false
+    // TODO: 先手後手の判定
+    return this._position.canPromote()
   }
 
   /**

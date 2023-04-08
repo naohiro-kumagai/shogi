@@ -18,6 +18,10 @@ export class Masu extends ValueObject {
     this._dan = new Dan(dan)
   }
 
+  get dan (): Dan {
+    return this._dan
+  }
+
   call (): string {
     return this._suji.value + this._dan.value
   }
@@ -29,5 +33,13 @@ export class Masu extends ValueObject {
    */
   diff (other: Masu) {
     return { suji: this._suji.diff(other._suji), dan: this._dan.diff(other._dan) }
+  }
+
+  /**
+   * 成ることができるマスかどうか
+   * @returns 判定結果
+   */
+  canPromote (): boolean {
+    return this._dan.canPromote()
   }
 }

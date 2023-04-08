@@ -7,6 +7,7 @@ export type DanType = '一' | '二' | '三' | '四' | '五' | '六' | '七' | '�
  */
 export class Dan extends ValueObject {
   private _mappingNum = { 一: 1, 二: 2, 三: 3, 四: 4, 五: 5, 六: 6, 七: 7, 八: 8, 九: 9 }
+  private _promoteArea = ['一', '二', '三']
 
   constructor (
     public readonly value: DanType
@@ -23,5 +24,13 @@ export class Dan extends ValueObject {
     const thisNum = this._mappingNum[this.value]
     const otherNum = other._mappingNum[other.value]
     return (thisNum - otherNum) as -9 | -8 | -7 | -6 | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+  }
+
+  /**
+   * 成ることができるエリアかどうか
+   * @returns 判定結果
+   */
+  canPromote (): boolean {
+    return this._promoteArea.includes(this.value)
   }
 }
