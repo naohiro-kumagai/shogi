@@ -24,6 +24,10 @@ export class Te extends ValueObject {
     // TODO: 打ち歩詰めはできません
   }
 
+  /**
+   * 指し手の文字列表現
+   * @returns 指し手の文字列表現
+   */
   call (): string {
     return `${this._afterPosition.call()}${this._koma.name}${this._isPromoted ? '成' : ''}${this._isPlacement ? '打' : ''}`
   }

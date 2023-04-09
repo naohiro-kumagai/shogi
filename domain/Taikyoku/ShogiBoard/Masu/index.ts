@@ -22,6 +22,10 @@ export class Masu extends ValueObject {
     return this._dan
   }
 
+  /**
+   * マスの文字列表現
+   * @returns 筋と段の組み合わせ
+   */
   call (): string {
     return this._suji.value + this._dan.value
   }
