@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 /**
  * 値オブジェクト
  */
@@ -23,8 +25,8 @@ export abstract class ValueObject {
     }
     const fields = this.getFields()
     for (const field of fields) {
-      if (this[field] !== other[field]) {
-        return false
+      if (!_.isEqual(this[field], other[field])) {
+        return false // フィールドの値が一致しない場合は false を返す
       }
     }
     return true
