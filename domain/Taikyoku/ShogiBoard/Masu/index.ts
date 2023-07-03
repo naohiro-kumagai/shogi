@@ -1,6 +1,7 @@
 import { Dan, DanType } from './Dan'
 import { Suji, SujiType } from './Suji'
 import { ValueObject } from '~~/domain/ValueObject'
+import { Koma } from '~~/domain/Koma'
 
 /**
  * マス
@@ -8,6 +9,7 @@ import { ValueObject } from '~~/domain/ValueObject'
 export class Masu extends ValueObject {
   private _suji: Suji
   private _dan: Dan
+  private _koma: Koma | undefined
 
   constructor (
     suji: SujiType,

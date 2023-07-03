@@ -1,7 +1,8 @@
-import { Dan } from './Masu/Dan'
-import { Suji } from './Masu/Suji'
+import { DanType } from './Masu/Dan'
+import { SujiType } from './Masu/Suji'
 import { Masu } from './Masu'
-import { Koma } from '~~/domain/Koma'
+// import { Koma } from '~~/domain/Koma'
+import { Komadai } from './Komadai'
 import { ValueObject } from '~~/domain/ValueObject'
 
 /**
@@ -9,8 +10,8 @@ import { ValueObject } from '~~/domain/ValueObject'
  */
 export class ShogiBoard extends ValueObject {
   private _masuList: Array<Masu>
-  private _senteKomadai: Array<Koma> = []
-  private _goteKomadai: Array<Koma> = []
+  private _senteKomadai: Komadai = new Komadai()
+  private _goteKomadai: Komadai = new Komadai()
 
   constructor () {
     super()
@@ -35,7 +36,7 @@ export class ShogiBoard extends ValueObject {
       { suji: 5, dan: '九' }, { suji: 4, dan: '九' }, { suji: 3, dan: '九' }, { suji: 2, dan: '九' }, { suji: 1, dan: '九' }
     ]
 
-    this._masuList = list.map((position: any) => new Masu(new Suji(position.suji), new Dan(position.dan)))
+    this._masuList = list.map(position => new Masu(position.suji as SujiType, position.dan as DanType))
   }
 
   get masuList () {

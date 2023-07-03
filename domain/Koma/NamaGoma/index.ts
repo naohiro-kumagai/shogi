@@ -1,6 +1,5 @@
 import { Koma, MovementRange } from '..'
 import { Narigoma } from '../Narigoma'
-import { Masu } from '~~/domain/Taikyoku/ShogiBoard/Masu'
 import { MissingConditionsError } from '~~/domain/DomainError'
 
 /**
@@ -8,10 +7,9 @@ import { MissingConditionsError } from '~~/domain/DomainError'
  */
 export abstract class Namagoma extends Koma {
   constructor (
-    protected _position: Masu,
     protected _movementRange: MovementRange
   ) {
-    super(_position, _movementRange)
+    super(_movementRange)
   }
 
   /**
@@ -28,10 +26,10 @@ export abstract class Namagoma extends Koma {
    * 成るための判定
    * @returns 判定結果
    */
-  canPromote (): boolean {
-    // TODO: 先手後手の判定
-    return this._position.canPromote()
-  }
+  // canPromote (): boolean {
+  //   // TODO: 先手後手の判定
+  //   return this._position.canPromote()
+  // }
 
   /**
    * 成る駒の取得

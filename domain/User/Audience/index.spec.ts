@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest'
 import { Audience } from '.'
 
-it('', () => {
-  const audience = new Audience('Alice', '01GWPQXN798HTK89W1325ZCD5Q')
-  expect(audience).toStrictEqual(new Audience('Alice', '01GWPQXN798HTK89W1325ZCD5Q'))
+it('IDを指定すると同じIDがセットされる', () => {
+  const audience = new Audience('Alice')
+  expect(audience.id.equal(new Audience('Alice', audience.id).id)).toBe(true)
 })

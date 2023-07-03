@@ -1,5 +1,5 @@
-import { CannotMoveError } from '../DomainError'
-import { Masu } from '../Taikyoku/ShogiBoard/Masu'
+// import { CannotMoveError } from '../DomainError'
+// import { Masu } from '../Taikyoku/ShogiBoard/Masu'
 import { ValueObject } from '~~/domain/ValueObject'
 
 type Movement = {
@@ -16,7 +16,6 @@ export abstract class Koma extends ValueObject {
   abstract readonly name: string
 
   constructor (
-    protected readonly _position: Masu,
     protected readonly _movementRange: MovementRange
   ) {
     super()
@@ -26,13 +25,13 @@ export abstract class Koma extends ValueObject {
    * 移動
    * @param destination 移動先のマス
    */
-  move (destination: Masu): Koma {
-    if (!this.canMove(destination.diff(this._position))) { return this }
-    // console.log(this)
-    // console.log(new this.constructor(destination))
-    const Constructor = this.constructor as { new(destination: Masu): Koma }
-    return new Constructor(destination)
-  }
+  // move (destination: Masu): Koma {
+  //   if (!this.canMove(destination.diff(this._position))) { return this }
+  //   // console.log(this)
+  //   // console.log(new this.constructor(destination))
+  //   const Constructor = this.constructor as { new(destination: Masu): Koma }
+  //   return new Constructor(destination)
+  // }
 
   /**
    * 移動できるかの判定
@@ -40,10 +39,10 @@ export abstract class Koma extends ValueObject {
    * @returns 移動できるかどうか
    * @throws {CannotMoveError} 移動できません
    */
-  protected canMove (destination: Movement): true {
-    if (!this._movementRange.some(movement => movement.suji === destination.suji && movement.dan === destination.dan)) {
-      throw new CannotMoveError('移動できません')
-    }
-    return true
-  }
+  // protected canMove (destination: Movement): true {
+  //   if (!this._movementRange.some(movement => movement.suji === destination.suji && movement.dan === destination.dan)) {
+  //     throw new CannotMoveError('移動できません')
+  //   }
+  //   return true
+  // }
 }
