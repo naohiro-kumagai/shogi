@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  app: &app
+    # image: node:18.12.1-slim
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: sh -c "npm i && rm -rf /tmp/nitro/worker-* && npm run dev"
+    working_dir: $PWD
+    tty: true
+    # user: node
+    user: root
+    network_mode: host
+    # ports:
+    #   - 3000:3000
+    #   - 24678:24678
+    environment:
+      # VITE_WEB_SOCKET_SERVER_URL: ${VITE_WEB_SOCKET_SERVER_URL:-ws://localhost:5000}
+      # DATABASE_URL:
+      # # AWS_ACCESS_KEY_ID:
+      # # AWS_DEFAULT_REGION:
+      # # AWS_SECRET_ACCESS_KEY:
+      # NUXT_AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      # NUXT_AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      # NUXT_REGION: ${AWS_DEFAULT_REGION}
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - type: bind
+        source: "."
+        target: "$PWD"
+
+  test:
+    <<: *app
+    command: ["npm", "run", "test:watch"]
+    # ports: []
+
+  ws-server:
+    <<: *app
+    command: sh -c "npm run ws-server"
+    # ports:
+    #   - 9229:9229
+    #   - 5000:5000

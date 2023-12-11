@@ -1,6 +1,3 @@
 {
-  "root": true,
-  "extends": [
-    "@nuxtjs/eslint-config-typescript"
-  ]
+  "extends": "next/core-web-vitals"
 }

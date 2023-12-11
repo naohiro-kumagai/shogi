@@ -1,28 +1,36 @@
 {
-  "name": "shogi",
-  "private": true,
-  "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "test": "vitest",
-    "test:coverage": "vitest --coverage",
-    "lint": "eslint ."
-  },
-  "devDependencies": {
-    "@nuxt/eslint-config": "^0.1.1",
-    "@nuxtjs/eslint-config-typescript": "^12.0.0",
-    "@types/lodash": "^4.14.192",
-    "@vitest/coverage-c8": "^0.29.7",
-    "eslint": "^8.36.0",
-    "jsdom": "^21.1.1",
-    "nuxt": "^3.3.2",
-    "vitest": "^0.29.7"
-  },
-  "dependencies": {
-    "lodash": "^4.17.21",
-    "ulid": "^2.3.0"
-  }
+	"name": "shogi",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"ws-server": "MAPPING_KEY=action ts-node-dev --inspect=9229 --clear --respawn ws-server/handler.ts",
+		"ws-server-build": "MAPPING_KEY=action ./node_modules/.bin/esbuild ws-server/handler.ts --platform=node --bundle --outfile=.output-ws/handler.js",
+		"wscat": "wscat -c ws://localhost:5000",
+		"package-update": "npx npm-check-updates -u"
+	},
+	"dependencies": {
+		"aws-lambda-ws-server": "^0.1.21",
+		"lodash": "^4.17.21",
+		"next": "14.0.4",
+		"react": "^18",
+		"react-dom": "^18"
+	},
+	"devDependencies": {
+		"@types/lodash": "^4.14.202",
+		"@types/node": "^20",
+		"@types/react": "^18",
+		"@types/react-dom": "^18",
+		"autoprefixer": "^10.0.1",
+		"eslint": "^8",
+		"eslint-config-next": "14.0.4",
+		"postcss": "^8",
+		"tailwindcss": "^3.3.0",
+		"ts-node-dev": "^2.0.0",
+		"typescript": "^5",
+		"wscat": "^5.2.0"
+	}
 }
