@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import { Te } from '.'
-import { Masu } from '~~/domain/Taikyoku/ShogiBoard/Masu'
-import { Fuhyou } from '~~/domain/Koma/NamaGoma/Fuhyou'
-import { MissingConditionsError } from '~~/domain/DomainError'
-import { Komadai } from '~~/domain/Taikyoku/ShogiBoard/Komadai'
+import { Masu } from '../../../../Taikyoku/ShogiBoard/Masu'
+import { Fuhyou } from '../../../../Koma/NamaGoma/Fuhyou'
+import { MissingConditionsError } from '../../../../DomainError'
+import { Komadai } from '../../../../Taikyoku/ShogiBoard/Komadai'
 
 describe('Te', () => {
   it('駒を進めた位置の筋段駒の名前が読み上げられること', () => {

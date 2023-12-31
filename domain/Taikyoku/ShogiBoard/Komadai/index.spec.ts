@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { Komadai } from '.'
-import { Fuhyou } from '~~/domain/Koma/NamaGoma/Fuhyou'
+import { Fuhyou } from '../../../Koma/NamaGoma/Fuhyou'
 
 describe('Komadai', () => {
   it('駒台の初期状態では駒がないこと', () => {

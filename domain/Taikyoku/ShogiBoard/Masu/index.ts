@@ -1,7 +1,7 @@
 import { Dan, DanType } from './Dan'
 import { Suji, SujiType } from './Suji'
-import { ValueObject } from '~~/domain/ValueObject'
-import { Koma } from '~~/domain/Koma'
+import { ValueObject } from '../../../ValueObject'
+import { Koma } from '../../../Koma'
 
 /**
  * マス

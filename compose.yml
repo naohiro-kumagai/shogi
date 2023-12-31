@@ -24,20 +24,75 @@ services:
       # NUXT_AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
       # NUXT_AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
       # NUXT_REGION: ${AWS_DEFAULT_REGION}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
       TZ: 'Asia/Tokyo'
     volumes:
       - type: bind
         source: "."
         target: "$PWD"
+      - type: bind
+        source: "/tmp"
+        target: "/tmp"
+    depends_on:
+      dynamodb-local:
+        condition: service_healthy
 
-  test:
-    <<: *app
-    command: ["npm", "run", "test:watch"]
-    # ports: []
+  # test:
+  #   <<: *app
+  #   command: ["npm", "run", "test:watch"]
+  #   # ports: []
 
-  ws-server:
-    <<: *app
-    command: sh -c "npm run ws-server"
+  # ws-server:
+  #   <<: *app
+  #   command: sh -c "npm run ws-server"
     # ports:
     #   - 9229:9229
     #   - 5000:5000
+
+  setup-event_store:
+    image: amazon/aws-cli:2.13.26
+    # command: dynamodb create-table --cli-input-json file:///dynamo/dynamodb_events_table.json --endpoint-url http://localhost:8000
+    command: ["dynamodb", "create-table", "--cli-input-json", "file:///dynamo/dynamodb_events_table.json", "--endpoint-url", "http://localhost:8000"]
+    network_mode: "host"
+    volumes:
+      # - ./event_store/dynamodb_events_table.json:/dynamo/dynamodb_events_table.json
+      - type: bind
+        source: "./event_store/dynamodb_events_table.json"
+        target: "/dynamo/dynamodb_events_table.json"
+    environment:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_DEFAULT_REGION=ap-northeast-1
+    depends_on:
+      dynamodb-local:
+        condition: service_healthy
+
+  dynamodb-local:
+    image: amazon/dynamodb-local:latest
+    user: root
+    command: -jar DynamoDBLocal.jar -sharedDb -dbPath /data
+    volumes:
+      - dynamodb-local-data:/data
+    ports:
+      - 8000:8000
+    environment:
+      - DEFAULT_REGION=ap-northeast-1
+    healthcheck:
+      test: ["CMD", "curl", "http://localhost:8000"]
+      interval: 1s
+      timeout: 10s
+      retries: 10
+
+  dynamodb-admin:
+    image: aaronshaf/dynamodb-admin:latest
+    environment:
+      - DYNAMO_ENDPOINT=dynamodb-local:8000
+    ports:
+      - 8001:8001
+    depends_on:
+      dynamodb-local:
+        condition: service_healthy
+
+volumes:
+  dynamodb-local-data:

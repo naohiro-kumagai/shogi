@@ -1,6 +1,6 @@
 import { MoveSequence } from './MoveSequence'
 import { TimeLimit } from './TimeLimit'
-import { ValueObject } from '~~/domain/ValueObject'
+import { ValueObject } from '../../ValueObject'
 
 /**
  * 棋譜

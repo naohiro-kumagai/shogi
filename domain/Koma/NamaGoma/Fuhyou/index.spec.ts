@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import { Tokin } from '../../Narigoma/Tokin'
 import { Fuhyou } from '.'
-import { Masu } from '~~/domain/Taikyoku/ShogiBoard/Masu'
-import { MissingConditionsError } from '~~/domain/DomainError'
+// import { Masu } from '~~/domain/Taikyoku/ShogiBoard/Masu'
+import { MissingConditionsError } from '../../../DomainError'
 
 describe('Fuhyou', () => {
   // it('前方に一マスだけ移動できる', () => {

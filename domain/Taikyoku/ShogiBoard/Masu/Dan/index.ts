@@ -1,4 +1,4 @@
-import { ValueObject } from '~~/domain/ValueObject'
+import { ValueObject } from '../../../../ValueObject'
 
 export type DanType = '一' | '二' | '三' | '四' | '五' | '六' | '七' | '八' | '九'
 

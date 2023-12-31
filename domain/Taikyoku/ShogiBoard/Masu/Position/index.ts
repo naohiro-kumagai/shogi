@@ -1,6 +1,6 @@
 import { SujiType } from '../Suji'
 import { DanType } from '../Dan'
-import { ValueObject } from '~~/domain/ValueObject'
+import { ValueObject } from '../../../../ValueObject'
 
 export class Position extends ValueObject {
   constructor (

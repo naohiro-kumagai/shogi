@@ -1,4 +1,4 @@
-import { ValueObject } from '~~/domain/ValueObject'
+import { ValueObject } from '../../../../ValueObject'
 
 export type SujiType = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 

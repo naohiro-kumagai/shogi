@@ -1,5 +1,5 @@
 import { Te } from './Te'
-import { ValueObject } from '~~/domain/ValueObject'
+import { ValueObject } from '../../../ValueObject'
 
 /**
  * 移動順序
