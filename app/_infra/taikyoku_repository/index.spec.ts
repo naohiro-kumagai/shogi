@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { TaikyokuRepository } from ".";
-import { Taikyoku } from "@/domain/Taikyoku";
+import { Taikyoku } from "~/domain/Taikyoku";
 
 describe("TaikyokuRepository", () => {
   describe('#create(taikyoku)', () => {

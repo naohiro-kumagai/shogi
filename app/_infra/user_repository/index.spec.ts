@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { UserRepository } from ".";
-import { Registrant } from "@/domain/User/Registrant";
-import { UserId } from "@/domain/User/UserId";
+import { Registrant } from "~/domain/User/Registrant";
+import { UserId } from "~/domain/User/UserId";
 
 describe('UserRepository', () => {
   describe('#creare(user)', () => {

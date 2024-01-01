@@ -1,8 +1,8 @@
 import { DynamoDBClient, GetItemCommand, PutItemCommand } from '@aws-sdk/client-dynamodb'
-import { Taikyoku } from "@/domain/Taikyoku";
-import { TaikyokuId } from "@/domain/Taikyoku/TaikyokuId";
+import { Taikyoku } from "~/domain/Taikyoku";
+import { TaikyokuId } from "~/domain/Taikyoku/TaikyokuId";
 import { ITaikyokuRepository } from "~/domain/Taikyoku/taikyoku_repository.interface";
-import { UserId } from '@/domain/User/UserId';
+import { UserId } from '~/domain/User/UserId';
 
 export class TaikyokuRepository implements ITaikyokuRepository {
   private _dbClient: DynamoDBClient
@@ -18,7 +18,7 @@ export class TaikyokuRepository implements ITaikyokuRepository {
     })
   }
 
-  async create(taikyoku: Taikyoku): Promise<void> {
+  async create (taikyoku: Taikyoku): Promise<void> {
     // user登録イベントを発行
     const putCommand = new PutItemCommand({
       TableName: 'shogi_events',
