@@ -41,7 +41,7 @@ jobs:
       - name: ci
         run: npm ci
       - name: setup dynamodb
-        run: aws dynamodb create-table --cli-input-json file:///event_store/dynamodb_events_table.json --endpoint-url http://localhost:8000
+        run: aws dynamodb create-table --cli-input-json file://event_store/dynamodb_events_table.json --endpoint-url http://localhost:8000
       - name: test
         run: npm run test:coverage
     services:
