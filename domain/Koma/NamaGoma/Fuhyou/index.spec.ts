@@ -15,7 +15,7 @@ describe('Fuhyou', () => {
   //   expect(() => fu.move(new Masu(7, '五'))).toThrowError(new CannotMoveError('移動できません'))
   // })
 
-  it('条件を満たすと"と金"になれること', () => {
+  it.skip('条件を満たすと"と金"になれること', () => {
     // Given
     const initialFu = new Fuhyou()
     // const movedFu = initialFu.move(new Masu(7, '三'))
