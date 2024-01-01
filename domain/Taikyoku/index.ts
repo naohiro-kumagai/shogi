@@ -13,6 +13,7 @@ import { Playing } from './TaikyokuStatus/Playing'
  */
 export class Taikyoku {
   public readonly name: string
+  public readonly comment: string
   private _status: TaikyokuStatus
   public board: ShogiBoard = new ShogiBoard()
   public kifu: Kifu | undefined
@@ -20,8 +21,9 @@ export class Taikyoku {
   public goteId?: UserId
   public readonly id: TaikyokuId
 
-  constructor ({ name, senteId, goteId, id }: { name: string, senteId?: UserId, goteId?: UserId, id?: TaikyokuId }) {
+  constructor ({ name, comment, senteId, goteId, id }: { name: string, comment?: string, senteId?: UserId, goteId?: UserId, id?: TaikyokuId }) {
     this.name = name
+    this.comment = comment || ''
     this._status = new Matchmaking() // 新規作成時は対局相手募集中
     if (senteId) { this.senteId = senteId }
     if (goteId) { this.goteId = goteId }

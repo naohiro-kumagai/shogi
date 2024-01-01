@@ -3,7 +3,7 @@ import { SujiType } from './Masu/Suji'
 import { Masu } from './Masu'
 // import { Koma } from '~~/domain/Koma'
 import { Komadai } from './Komadai'
-import { ValueObject } from '~~/domain/ValueObject'
+import { ValueObject } from '../../ValueObject'
 
 /**
  * 将棋盤

@@ -1,4 +1,4 @@
-import { ValueObject } from '~~/domain/ValueObject'
+import { ValueObject } from '../../../ValueObject'
 
 /**
  * 持ち時間

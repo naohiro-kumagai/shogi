@@ -1,9 +1,9 @@
-import { Koma } from '~~/domain/Koma'
-// import { ValueObject } from '~~/domain/ValueObject'
-import { Masu } from '~~/domain/Taikyoku/ShogiBoard/Masu'
-import { Namagoma } from '~~/domain/Koma/NamaGoma'
-import { MissingConditionsError } from '~~/domain/DomainError'
-import { Komadai } from '~~/domain/Taikyoku/ShogiBoard/Komadai'
+import { Koma } from '../../../../Koma'
+// import { ValueObject } from '../../../../ValueObject'
+import { Masu } from '../../../../Taikyoku/ShogiBoard/Masu'
+import { Namagoma } from '../../../../Koma/NamaGoma'
+import { MissingConditionsError } from '../../../../DomainError'
+import { Komadai } from '../../../../Taikyoku/ShogiBoard/Komadai'
 
 /**
  * 指し手、打ち手

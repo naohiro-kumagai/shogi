@@ -1,5 +1,5 @@
-import { Koma } from '~~/domain/Koma'
-import { ValueObject } from '~~/domain/ValueObject'
+import { Koma } from '../../../Koma'
+import { ValueObject } from '../../../ValueObject'
 
 export class Komadai extends ValueObject {
   constructor (

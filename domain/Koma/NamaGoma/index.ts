@@ -1,6 +1,6 @@
 import { Koma, MovementRange } from '..'
 import { Narigoma } from '../Narigoma'
-import { MissingConditionsError } from '~~/domain/DomainError'
+import { MissingConditionsError } from '../../DomainError'
 
 /**
  * 成駒
