@@ -16,6 +16,7 @@
 	},
 	"dependencies": {
 		"@aws-sdk/client-dynamodb": "^3.484.0",
+		"@vercel/speed-insights": "^1.0.2",
 		"aws-lambda-ws-server": "^0.1.21",
 		"lodash": "^4.17.21",
 		"next": "14.0.4",
