@@ -40,6 +40,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: ci
         run: npm ci
+      - name: setup dynamodb
+        run: aws dynamodb create-table --cli-input-json file:///event_store/dynamodb_events_table.json --endpoint-url http://localhost:8000
       - name: test
         run: npm run test:coverage
     services:
@@ -47,3 +49,7 @@ jobs:
         image: amazon/dynamodb-local:latest
         ports:
           - 8000:8000
+        env:
+          AWS_ACCESS_KEY_ID: dummy
+          AWS_SECRET_ACCESS_KEY: dummy
+          AWS_DEFAULT_REGION: ap-northeast-1
